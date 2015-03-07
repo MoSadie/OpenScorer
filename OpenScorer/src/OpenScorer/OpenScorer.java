@@ -12,6 +12,7 @@ public class OpenScorer  extends JFrame {
 	 */
 	private static final long serialVersionUID = 5631011118025460373L;
 	public static void main (String[] arguments) {
+		/*
 		File folder = new File("OpenScorerData");
 		if (folder.mkdir()) {
 			System.out.println("sheets folder created");
@@ -24,12 +25,20 @@ public class OpenScorer  extends JFrame {
 			System.out.println("Name of file: " + item.toString());
 			Items.put(item.toString(), item);
 		}
-	}
-	public OpenScorer() {
-		super("OpenScorer");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(350,100);
-		setVisible(true);
+		*/
 		
+		File sheet = new File("OpenScorerData/default.txt");
+		if (sheet.exists()) {
+			System.out.println("Default Found! Opening...");
+			OpenFrame frame = new OpenFrame(sheet);
+		} else {
+			System.out.println("Default not found. Creating...");
+			try {
+				sheet.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 }
