@@ -60,7 +60,7 @@ public class OpenFrame extends JFrame implements ActionListener{
 							System.out.println("Added " + type[0] + " to the frame!");
 							break;
 						case "JPasswordField":
-							OpenScorer.objects.put(type[1], new JPasswordField());
+							OpenScorer.objects.put(type[1], new JPasswordField((Integer.parseInt(type[2]))));
 							loadedPanel.add((JPasswordField)OpenScorer.objects.get(type[1]));
 							System.out.println("Added " + type[0] + " to the frame!");
 							break;
