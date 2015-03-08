@@ -9,6 +9,8 @@ JPasswordField,L A B E L,15;
 JTextArea,LabelOfArea,5,15,true;
 JCheckBox,CheckCheck;
 ```
+####Result:
+![alt tag](Images/ExampleTxtResults.png)
 
 ####Here is a breakdown:
 
