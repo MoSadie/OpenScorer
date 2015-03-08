@@ -29,7 +29,7 @@ public class OpenScorer  extends JFrame {
 		}
 		*/
 		
-		File sheet = new File("OpenScorerData/default.txt");
+		File sheet = new File("OpenScorerData" + File.separator + "default.txt");
 		if (sheet.exists()) {
 			System.out.println("Default Found!");
 			
@@ -43,6 +43,7 @@ public class OpenScorer  extends JFrame {
 			}
 		}
 		System.out.println("Opening Default...");
-		OpenFrame frame = new OpenFrame(sheet);
+		JFrame jFrame = new JFrame();
+		OpenFrame frame = new OpenFrame(sheet, jFrame);
 	}
 }
