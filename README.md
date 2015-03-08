@@ -10,7 +10,7 @@ JTextArea,LabelOfArea,5,15,true;
 JCheckBox,CheckCheck;
 ```
 ####Result:
-![alt tag](Images/ExampleTxtResults.png)
+![alt tag](OpenScorer/Images/ExampleTxtResults.PNG)
 
 ####Here is a breakdown:
 
