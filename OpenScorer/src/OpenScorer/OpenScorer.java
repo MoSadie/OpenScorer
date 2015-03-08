@@ -11,6 +11,8 @@ public class OpenScorer  extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 5631011118025460373L;
+	OpenFrame frame;
+	public static HashMap<String, Object> objects = new HashMap<String, Object>();
 	public static void main (String[] arguments) {
 		/*
 		File folder = new File("OpenScorerData");
@@ -29,8 +31,8 @@ public class OpenScorer  extends JFrame {
 		
 		File sheet = new File("OpenScorerData/default.txt");
 		if (sheet.exists()) {
-			System.out.println("Default Found! Opening...");
-			OpenFrame frame = new OpenFrame(sheet);
+			System.out.println("Default Found!");
+			
 		} else {
 			System.out.println("Default not found. Creating...");
 			try {
@@ -40,5 +42,7 @@ public class OpenScorer  extends JFrame {
 				e.printStackTrace();
 			}
 		}
+		System.out.println("Opening Default...");
+		OpenFrame frame = new OpenFrame(sheet);
 	}
 }

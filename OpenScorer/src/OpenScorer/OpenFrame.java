@@ -19,7 +19,6 @@ public class OpenFrame extends JFrame{
 		super("OpenScorer: " + file.getName());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(350,100);
-		setVisible(true);
 		try {
 			reader = new BufferedReader(new FileReader(file));
 		} catch (FileNotFoundException e) {
@@ -27,12 +26,42 @@ public class OpenFrame extends JFrame{
 			e.printStackTrace();
 		}
 		try {
-			while (reader.readLine() != null) {
-				System.out.println(reader.readLine());
+			while (true) {
+				String line = reader.readLine();
+				if (line != null) {
+					System.out.println("Line is " + line);
+					String[] listOfItems = line.split(";");
+					for (String item: listOfItems) {
+						String[] type = item.split(",");
+						switch (type[0]) {
+						case "JLabel":
+							OpenScorer.objects.put(type[1], new JLabel(type[1]));
+							add((JLabel)OpenScorer.objects.get(type[1]));
+						case "JTextField":
+							OpenScorer.objects.put(type[1], new JTextField());
+							add((JTextField)OpenScorer.objects.get(type[1]));
+						case "JPasswordField":
+							OpenScorer.objects.put(type[1], new JPasswordField());
+							add((JPasswordField)OpenScorer.objects.get(type[1]));
+						case "JTextArea":
+							OpenScorer.objects.put(type[1], new JTextArea());
+							add((JTextArea)OpenScorer.objects.get(type[1]));
+						case "JCheckBox":
+							OpenScorer.objects.put(type[1], new JCheckBox());
+							add((JCheckBox)OpenScorer.objects.get(type[1]));
+						default:
+							System.out.println("Error: Invalid Swing Compoment, " + type[0] + "Must be either JLabel, JTextField, JPasswordField, JTextArea, or JCheckBox.");
+						}
+					}
+				} else {
+					System.out.println("End of File reached!");
+					break;
+				}
 			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		setVisible(true);
 	}
 }
