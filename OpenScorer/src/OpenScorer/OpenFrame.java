@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
@@ -25,6 +26,8 @@ public class OpenFrame extends JFrame implements ActionListener{
 	String[] listOfItems;
 	BufferedWriter output;
 	JFrame Frame;
+	String[] fileLines;
+	ArrayList<String> ALlistOfItems = new ArrayList<String>();
 	OpenFrame(File file, JFrame frame) {
 		super("OpenScorer: " + file.getName());
 		File = file;
@@ -47,6 +50,7 @@ public class OpenFrame extends JFrame implements ActionListener{
 					System.out.println("Line is " + line);
 					listOfItems = line.split(";");
 					for (String item: listOfItems) {
+						ALlistOfItems.add(item);
 						String[] type = item.split(",");
 						switch (type[0]) {
 						case "JLabel":
@@ -119,7 +123,8 @@ public class OpenFrame extends JFrame implements ActionListener{
 				e1.printStackTrace();
 			}
 			System.out.println("Output Created!");
-			for (String item: listOfItems) {
+			String[] stringArray = ConvertToStringArray(ALlistOfItems);
+			for (String item: stringArray) {
 				String[] type = item.split(",");
 				switch (type[0]) {
 				case "JLabel":
@@ -205,5 +210,10 @@ public class OpenFrame extends JFrame implements ActionListener{
 		} else {
 			System.out.println("Invalid Action Command: " + e.getActionCommand());
 		}
+	}
+	
+	public static String[] ConvertToStringArray(ArrayList<String> list)
+	{
+	    return (String[])list.toArray(new String[0]);
 	}
 }
